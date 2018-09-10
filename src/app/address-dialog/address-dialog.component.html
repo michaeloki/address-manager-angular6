@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>Add a new address</h2>
+
+<mat-dialog-content>
+    
+        <mat-form-field>
+                <input matInput [(ngModel)]="data.address" placeholder="What's your address?">
+              </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+        <button mat-button (click)="close()" mat-raised-button color="primary">No Thanks</button>
+        <button mat-button [mat-dialog-close]="data.address" cdkFocusInitial mat-raised-button color="accent">Ok</button>
+</mat-dialog-actions>

@@ -1,0 +1,36 @@
+    <mat-progress-bar mode="indeterminate" *ngIf="loading" class="spacing"></mat-progress-bar>
+
+    <mat-card>
+        <mat-card-title>
+        {{addressTitle}}
+        </mat-card-title>
+    </mat-card>
+    <span *ngIf="allCards">
+  <mat-card *ngFor="let contact of contacts" >
+    <mat-card-content>
+            <div class="button-row">
+            <mat-icon color="warn">place</mat-icon> {{contact.physical_address}}
+            </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <div class="button-row">
+        <mat-icon (click)="openEdit($event,contact)">edit</mat-icon>
+        <mat-icon color="primary" (click)="deleteContact($event,contact)">delete</mat-icon>
+        </div>
+      </mat-card-actions>
+ </mat-card>
+</span>
+
+<mat-card *ngIf="editMode">
+      <form class="update-form">      
+        <mat-form-field class="update-full-width">
+          <textarea matInput [(ngModel)]="address" placeholder="Enter new address"
+           [ngModelOptions]="{standalone: true}"></textarea>
+        </mat-form-field>
+      </form>
+      <div class="button-row">
+      <button mat-raised-button color="primary" (click)="cancelEdit()">Cancel</button>
+      <button mat-raised-button color="accent" (click)="editContact()">Update</button>
+    </div>
+</mat-card>
+
